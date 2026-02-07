@@ -77,6 +77,14 @@ export default async function ExamPage({
           <h2 className="text-xl font-semibold mb-4">
             הגשות ({submissions.length})
           </h2>
+          {submissions.some((s) => s.status === "pending") && (
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4 text-sm">
+              <p className="font-medium text-blue-800 mb-1">יש הגשות בהמתנה לבדיקה</p>
+              <p className="text-blue-700">
+                בקש מ-Claude Code: &ldquo;בדוק את המבחנים הממתינים של {exam.name}&rdquo;
+              </p>
+            </div>
+          )}
           <div className="space-y-2">
             {submissions.map((sub) => (
               <div
